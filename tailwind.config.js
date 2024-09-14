@@ -21,6 +21,18 @@ module.exports = {
         hovered: '#2e3035',
         message: '#383a3f',
       },
+      'channels': {
+        DEFAULT: '#3f3d3a',
+        text: '#80848e',
+        background: '#2b2d31',
+        selected:'#414249',
+        white:'#f2f3e4',
+        border:'#222325'
+      },
+      'sidebar': {
+        DEFAULT: '#2b2d31',
+        border:'#222325'
+      },
     extend: {},
   },
   plugins: [

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FaHashtag } from "react-icons/fa6";
 import { Link, useLocation } from "react-router-dom";
 
 const Sidebar: React.FC = () => {
@@ -17,13 +18,12 @@ const Sidebar: React.FC = () => {
   };
 
   return (
-    <div className="w-64 h-screen bg-gray-800 text-white">
+    <div className="flex flex-col h-screen bg-sidebar text-white">
+      <div className="p-4 text-xl font-semibold border-b border-channels-border flex items-center space-x-2 text-channels-white">
+        <span>My Portfolio</span>
+      </div>
+      
       <ul className="mt-4 space-y-2">
-        <li>
-          <Link to="/channel" className="block px-4 py-2 hover:bg-gray-700">
-            Channel
-          </Link>
-        </li>
 
         {/* Dropdown Menu */}
         <li className="px-4 py-2 cursor-pointer" onClick={handleDropdownToggle}>

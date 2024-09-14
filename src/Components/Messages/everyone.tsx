@@ -14,10 +14,9 @@ const Everyone: React.FC = () => {
           <div className="flex items-center space-x-2">
             <span className="font-semibold">Totoj</span>
             <span className="text-sm text-gray-400">Today at 3:45 PM</span>
-          </div>
-          <div className="rounded-lg text-black bg-opacity-70">
+          </div><div className="rounded-lg text-black bg-opacity-70">
             <p className="text-sm">
-              <span className="bg-tagged-message text-white px-1 rounded"> @everyone</span>, 
+              <span className="bg-tagged-message text-white px-1 rounded"> @everyone</span>,
               Welcome to my <s>discord server</s> <i>portfolio</i>
             </p>
           </div>

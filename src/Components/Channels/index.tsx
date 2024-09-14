@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import Message from "../Messages";
 import Everyone from "../Messages/everyone";
-
+import { FaHashtag } from "react-icons/fa6";
 const Channel: React.FC = () => {
   const messageEndRef = useRef<HTMLDivElement>(null);
 
@@ -14,10 +14,11 @@ const Channel: React.FC = () => {
 
   return (
     <div className="flex flex-col h-screen bg-default text-white">
-      {/* Channel Header */}
-      <div className="p-4  bg-default  text-xl font-semibold border-b border-gray-700">
-        #general
+      <div className="p-4 bg-default text-xl font-semibold border-b border-channels-border flex items-center space-x-2 text-channels-white">
+        <FaHashtag className="text-channels-text" />
+        <span>About Me</span>
       </div>
+
 
       {/* Chat Area */}
       <div className="pb-2 flex-1 overflow-y-auto flex flex-col-reverse space-y-4">
