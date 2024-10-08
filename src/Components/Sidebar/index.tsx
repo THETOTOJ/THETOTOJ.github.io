@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { FaHashtag } from "react-icons/fa6";
 import { Link, useLocation } from "react-router-dom";
+import { IoChevronDownOutline, IoChevronForwardOutline } from "react-icons/io5";
 
 const Sidebar: React.FC = () => {
   const location = useLocation();
   const [isDropdownOpen, setIsDropdownOpen] = useState(true);
 
   useEffect(() => {
-    if (["/school", "/work", "/skills"].includes(location.pathname)) {
+    if (["/school", "/work", "/skills", "/project", "/contact"].includes(location.pathname)) {
       setIsDropdownOpen(true);
     }
   }, [location.pathname]);
@@ -17,89 +18,54 @@ const Sidebar: React.FC = () => {
     setIsDropdownOpen((prev) => !prev);
   };
 
+  // List of all channels
+  const channels = [
+    { path: "/", name: "About Me" },
+    { path: "/school", name: "School" },
+    { path: "/work", name: "Work" },
+    { path: "/skills", name: "Skills" },
+    { path: "/project", name: "Project" },
+    { path: "/contact", name: "Coordonnées" },
+  ];
+
   return (
-    <div className="flex flex-col h-screen bg-sidebar text-white">
-      <div className="p-4 text-xl font-semibold border-b border-channels-border flex items-center space-x-2 text-channels-white">
+    <div className="flex w-48 flex-col h-screen bg-sidebar text-white">
+      {/* Server/Portfolio Header */}
+      <div className="p-4 text-lg font-semibold border-b border-gray-800 flex items-center space-x-2 text-gray-300">
         <span>My Portfolio</span>
       </div>
-      
-      <ul className="mt-4 space-y-2">
 
-        {/* Dropdown Menu */}
-        <li className="px-4 py-2 cursor-pointer" onClick={handleDropdownToggle}>
-          <div className="flex justify-between items-center hover:bg-gray-700 p-2 rounded-md">
-            <span>Text Channels</span>
-            <svg
-              className={`w-4 h-4 transform ${
-                isDropdownOpen ? "rotate-180" : ""
-              }`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M19 9l-7 7-7-7"
-              ></path>
-            </svg>
+      <ul className="mt-4 space-y-2 text-sm">
+        {/* Dropdown Toggle */}
+        <li className="cursor-pointer">
+          <div
+            className="flex items-center hover:text-sidebar-hover p-2 rounded-md text-sidebar-text font-bold"
+            onClick={handleDropdownToggle}
+          >
+            {isDropdownOpen ? <IoChevronDownOutline /> : <IoChevronForwardOutline />}
+            <span>&nbsp;Text Channels</span>
           </div>
         </li>
 
-        {isDropdownOpen && (
-          <ul className="mt-2 space-y-1 pl-4">
-            <li>
+        {/* Channel List */}
+        <ul className="mt-2 space-y-1">
+          {channels.map((channel) => (
+            <li key={channel.path}>
               <Link
-                to="/"
-                className="block px-4 py-2 text-sm hover:bg-gray-700"
+                to={channel.path}
+                className={`flex items-center px-4 py-2 rounded-md text-xs ${
+                  location.pathname === channel.path
+                    ? "bg-channels-selected text-white" // Always highlight the active channel
+                    : isDropdownOpen
+                    ? "hover:bg-channels-selected text-channels-name"
+                    : "hidden" // Hide non-active channels when dropdown is closed
+                }`}
               >
-                About Me
+                <FaHashtag className="mr-2" /> {channel.name}
               </Link>
             </li>
-            <li>
-              <Link
-                to="/school"
-                className="block px-4 py-2 text-sm hover:bg-gray-700"
-              >
-                School
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/work"
-                className="block px-4 py-2 text-sm hover:bg-gray-700"
-              >
-                Work
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/skills"
-                className="block px-4 py-2 text-sm hover:bg-gray-700"
-              >
-                Skills
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/skills"
-                className="block px-4 py-2 text-sm hover:bg-gray-700"
-              >
-                Project
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/skills"
-                className="block px-4 py-2 text-sm hover:bg-gray-700"
-              >
-                Coordonnées
-              </Link>
-            </li>
-          </ul>
-        )}
+          ))}
+        </ul>
       </ul>
     </div>
   );

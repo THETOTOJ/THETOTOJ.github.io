@@ -31,7 +31,11 @@ const Channel: React.FC = () => {
           avatarUrl="https://cdn.discordapp.com/embed/avatars/1.png"
           timestamp="Today at 3:50 PM"
         />
-        <Everyone />
+        <Everyone
+          text="Hi! This looks like a Discord chat!"
+          username="Totoj"
+          avatarUrl="https://cdn.discordapp.com/embed/avatars/0.png"
+          timestamp="Today at 3:50 PM" />
       </div>
       <div className="bg-default p-4 pointer-events-auto cursor:not-allowed">
         <input
