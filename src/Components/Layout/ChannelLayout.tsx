@@ -17,12 +17,15 @@ const ChannelLayout: React.FC<ChannelLayoutProps> = ({ channelName, children }) 
       messageEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, []);
+
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  const handleChannelChange = () => {
+  // Trigger transition when channelName changes
+  useEffect(() => {
     setIsTransitioning(true);
-    setTimeout(() => setIsTransitioning(false), 300);
-  };
+    const timeout = setTimeout(() => setIsTransitioning(false), 300);
+    return () => clearTimeout(timeout);
+  }, [channelName]);
 
   // Theme-specific styles
   const getChannelStyles = () => {
@@ -119,6 +122,7 @@ const ChannelLayout: React.FC<ChannelLayoutProps> = ({ channelName, children }) 
         {/* Message Bubbles */}
         <div className={`transition-all duration-300 ${isTransitioning ? 'opacity-0 translate-x-4' : 'opacity-100 translate-x-0'}`}>
           {children}
+          <div ref={messageEndRef} />
         </div>
       </div>
 
