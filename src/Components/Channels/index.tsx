@@ -1,51 +1,34 @@
-import React, { useEffect, useRef } from "react";
 import Message from "../Messages";
+import ChannelLayout from "../Layout/ChannelLayout";
+import { developerData } from "../../Data/developer";
 import Everyone from "../Messages/everyone";
-import { FaHashtag } from "react-icons/fa6";
-const Channel: React.FC = () => {
-  const messageEndRef = useRef<HTMLDivElement>(null);
 
-  // Scroll to the bottom of the chat on load
-  useEffect(() => {
-    if (messageEndRef.current) {
-      messageEndRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, []);
-
+const Channel = () => {
   return (
-    <div className="flex flex-col h-screen bg-default text-white">
-      <div className="p-4 bg-default text-xl font-semibold border-b border-channels-border flex items-center space-x-2 text-channels-white">
-        <FaHashtag className="text-channels-text" />
-        <span>About Me</span>
-      </div>
-
-
-      {/* Chat Area */}
-      <div className="pb-2 flex-1 overflow-y-auto flex flex-col-reverse space-y-4">
-        {/* Message Bubbles */}
-        <div ref={messageEndRef}></div>
-
-        <Message
-          text="Hi! This looks like a Discord chat!"
-          username="AnotherUser"
-          avatarUrl="https://cdn.discordapp.com/embed/avatars/1.png"
-          timestamp="Today at 3:50 PM"
-        />
-        <Everyone
-          text="Hi! This looks like a Discord chat!"
-          username="Totoj"
-          avatarUrl="https://cdn.discordapp.com/embed/avatars/0.png"
-          timestamp="Today at 3:50 PM" />
-      </div>
-      <div className="bg-default p-4 pointer-events-auto cursor:not-allowed">
-        <input
-          type="text"
-          disabled
-          placeholder="You do not have permission to send messages in this channel"
-          className="w-full p-2 rounded-md bg-default-message text-white focus:outline-none cursor-not-allowed border-none"
-        />
-      </div>
-    </div>
+    <ChannelLayout channelName="about-me">
+      {/* Everyone message from developer */}
+      <Everyone
+        text="Welcome to my portfolio!"
+        username={developerData.username}
+        avatarUrl={developerData.avatarUrl}
+        timestamp="Today at 12:00 PM"
+        roles={developerData.roles}
+        about={developerData.about.description}
+        isMainDeveloper={true}
+        connectedAccounts={developerData.connectedAccounts}
+      />
+      
+      {/* You can add more messages here */}
+      <Message
+        text="Feel free to explore my work experience, education, and projects through the different channels!"
+        username={developerData.username}
+        avatarUrl={developerData.avatarUrl}
+        timestamp="Today at 12:01 PM"
+        roles={developerData.roles}
+        isMainDeveloper={true}
+        connectedAccounts={developerData.connectedAccounts}
+      />
+    </ChannelLayout>
   );
 };
 

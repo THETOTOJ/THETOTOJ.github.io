@@ -1,11 +1,21 @@
+import React from "react";
+import Message from "../Messages";
+import ChannelLayout from "../Layout/ChannelLayout";
+// Import your skills data here
+// import { SkillsData } from "../../Data/skills";
 
-function Skills() {
-    return (
-      <div className="App">
-        <p>This is a Skill</p>
-      </div>
-    );
-  }
-  
-  export default Skills;
-  
+const Skills = () => {
+  return (
+    <ChannelLayout channelName="Skills & Technologies">
+      {/* Add your skills-related messages here */}
+      <Message
+        text="My technical skills and expertise"
+        username="TechExpert"
+        avatarUrl="https://cdn.discordapp.com/embed/avatars/3.png"
+        timestamp="Today at 4:30 PM"
+      />
+    </ChannelLayout>
+  );
+};
+
+export default Skills;

@@ -12,7 +12,26 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+html {
+  overscroll-behavior: none;
+  background-color: #111827; /* Default dark theme color */
+}
 
+body {
+  margin: 0;
+  padding: 0;
+  overscroll-behavior: none;
+  background-color: #111827; /* Default dark theme color */
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
