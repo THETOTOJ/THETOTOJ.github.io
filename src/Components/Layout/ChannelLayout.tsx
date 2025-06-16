@@ -118,8 +118,7 @@ const ChannelLayout: React.FC<ChannelLayoutProps> = ({ channelName, children }) 
       </div>
 
       {/* Chat Area */}
-      <div className={`pb-2 flex-1 overflow-y-auto flex flex-col-reverse space-y-4 ${isLightTheme ? themeConfig.sidebar.background : styles.background}`}>
-        {/* Message Bubbles */}
+      <div className={`pb-2 flex-1 overflow-y-auto overflow-x-hidden flex flex-col-reverse space-y-4 ${isLightTheme ? themeConfig.sidebar.background : styles.background}`}>        {/* Message Bubbles */}
         <div className={`transition-all duration-300 ${isTransitioning ? 'opacity-0 translate-x-4' : 'opacity-100 translate-x-0'}`}>
           {children}
           <div ref={messageEndRef} />
