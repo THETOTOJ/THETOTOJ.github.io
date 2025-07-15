@@ -7,6 +7,7 @@ import School from './Components/Channels/school';
 import Work from './Components/Channels/work';
 import Skills from './Components/Channels/skills';
 import { ThemeProvider, useTheme } from './Contexts/ThemeContexts';
+import Contact from './Components/Channels/contact';
 
 // Component to handle body background
 const AppContent: React.FC = () => {
@@ -53,6 +54,7 @@ const AppContent: React.FC = () => {
             <Route path="/schools" element={<School />} />
             <Route path="/work" element={<Work />} />
             <Route path="/skills" element={<Skills />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </div>
       </div>

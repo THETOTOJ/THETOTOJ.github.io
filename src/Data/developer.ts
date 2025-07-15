@@ -10,6 +10,7 @@ export interface DeveloperData {
   username: string;
   displayName?: string;
   discriminator: string;
+  city?: string;
   avatarUrl: string;
   about: {
     description: string;
@@ -30,6 +31,7 @@ export interface DeveloperData {
     github: string;
     linkedin: string;
     website: string;
+    phone?: string;
   };
   status: {
     online: boolean;
@@ -38,12 +40,12 @@ export interface DeveloperData {
 }
 
 export const developerData: DeveloperData = {
-  name: "Your Name",
+  name: "Taha TAHIRI JOTEY",
   username: "Taha TAHIRI JOTEY",
   discriminator: "THETOTOJ",
-  avatarUrl: "https://via.placeholder.com/150", 
+  avatarUrl: "https://i.imgur.com/bHFaohy.jpeg",
   displayName: "Taha TAHIRI",
-  
+  city: "Courbevoie, France",
   about: {
     description: "Welcome to my portfolio! I'm a passionate developer creating amazing digital experiences. I specialize in full-stack development with expertise in React, TypeScript, Symfony, and modern web technologies.",
   },
@@ -81,10 +83,11 @@ export const developerData: DeveloperData = {
   ],
   
   contact: {
-    email: "your.email@example.com",
-    github: "your-github-username",
-    linkedin: "your-linkedin-profile",
-    website: "https://your-website.com"
+    phone: "+33 6 66 17 39 49",
+    email: "tahirijoteytaha@gmail.com",
+    github: "https://github.com/THETOTOJ",
+    linkedin: "https://www.linkedin.com/in/tahatj/",
+    website: "https://totoj.netlify.app/"
   },
   
   status: {
